@@ -13,7 +13,7 @@
     "url": "http://hughsk.io/"
   },
   "dependencies": {
-    "tab64": "0.0.1",
+    "tab64": "0.0.1"
   },
   "devDependencies": {
     "earth-topojson": "^1.0.0",
