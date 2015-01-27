@@ -9,6 +9,8 @@ Mesh data for Earth, projected in 3D for easy rendering. Useable with Node and
 a lighter file, you'll want to use the raw position data from a `Float32Array`
 and load it back in as an `ArrayBuffer` using `XMLHttpRequest`.
 
+[**view demo**](http://hughsk.io/earth-triangulated)
+
 ## Usage
 
 [![NPM](https://nodei.co/npm/earth-triangulated.png)](https://nodei.co/npm/earth-triangulated/)
