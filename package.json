@@ -5,7 +5,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "prepublish": "node build"
+    "prepublish": "node build",
+    "start": "cd demo && wzrd index.js -- -t glslify",
+    "bundle": "browserify -t glslify demo/index.js | uglifyjs -cm > bundle.js"
   },
   "author": {
     "name": "Hugh Kennedy",
@@ -16,10 +18,20 @@
     "tab64": "0.0.1"
   },
   "devDependencies": {
+    "browserify": "^8.1.1",
+    "canvas-fit": "^1.2.0",
+    "canvas-orbit-camera": "^1.0.1",
     "earth-topojson": "^1.0.0",
     "flatten": "0.0.1",
+    "gl-buffer": "^2.1.1",
+    "gl-context": "^0.1.1",
+    "gl-mat4": "^1.0.1",
+    "gl-vao": "^1.2.0",
+    "glslify": "^1.6.0",
     "poly2tri": "^1.3.5",
-    "topojson": "^1.6.18"
+    "topojson": "^1.6.18",
+    "uglify-js": "^2.4.16",
+    "wzrd": "^1.2.1"
   },
   "repository": {
     "type": "git",
