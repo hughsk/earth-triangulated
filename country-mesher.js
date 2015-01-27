@@ -34,8 +34,14 @@ function getShapeMesh(shape, i) {
   // this problem can be solved in 2D instead of 3D. However,
   // this means that sometimes points wrap around the world map
   // resulting in weird triangles. The following corrects this problem.
-  if (maxDistance(contour) > 300) {
+  var distance = maxDistance(contour)
+  if (distance > 300) {
     if (!unwrapContour(contour)) return false
+    if (distance > 9000) {
+      contour = contour.filter(function(p) {
+        return p.x < 9000 && p.y < 9000
+      })
+    }
   }
 
   // poly2tri is pretty picky with its data. This is the
