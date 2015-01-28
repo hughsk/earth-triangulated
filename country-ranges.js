@@ -14,7 +14,7 @@ function generateRanges(countries, index, positions) {
     var id      = countries[i].id
     var idx     = index[id]
 
-    mapping[id] = [n, (n += limit) - 1]
+    mapping[id] = [n, n += limit]
   }
 
   return mapping
