@@ -14,6 +14,9 @@ const fs             = require('fs')
   const countries = topojson
     .feature(earth, earth.objects[layer])
     .features
+    .filter(function(d) {
+      return d.id != '-99'
+    })
 
   // Convert our GeoJSON data into triangles
   const positions = countries

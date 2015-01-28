@@ -10,6 +10,9 @@ var data = require('../')
 var mesh = glVAO(gl, [{
   buffer: glBuffer(gl, data.positions)
   , size: 3
+}, {
+  buffer: glBuffer(gl, expandRanges(data.ranges, data.positions, data.index))
+  , size: 1
 }])
 
 var shader = glslify({
@@ -38,8 +41,11 @@ function render() {
   mat4.perspective(proj, Math.PI / 4, width / height, 0.001, 1000)
 
   shader.bind()
+  shader.attributes.position.location = 0
+  shader.attributes.index.location = 1
   shader.uniforms.view = view
   shader.uniforms.proj = proj
+  shader.uniforms.uindex = data.index.AUS
 
   mesh.bind()
   mesh.draw(gl.TRIANGLES, mesh.length)
@@ -49,3 +55,18 @@ window.addEventListener('resize'
   , require('canvas-fit')(canvas)
   , false
 )
+
+function expandRanges(ranges, positions, index) {
+  var output = new Float32Array(positions.length / 3)
+
+  Object.keys(ranges).forEach(function(code) {
+    var start = ranges[code][0] / 3
+    var end   = ranges[code][1] / 3
+
+    for (var i = start; i < end; i++) {
+      output[i] = index[code]
+    }
+  })
+
+  return output
+}
