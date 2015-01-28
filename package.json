@@ -1,6 +1,6 @@
 {
   "name": "earth-triangulated",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Mesh data for Earth, projected in 3D",
   "main": "index.js",
   "license": "MIT",
